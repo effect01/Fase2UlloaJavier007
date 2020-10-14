@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django_truncate',
+    'users.apps.UsersConfig',
     'web.apps.BooklaryConfig',
     'django.contrib.admin',
     'django.contrib.auth',

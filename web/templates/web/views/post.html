@@ -1,0 +1,139 @@
+
+{% block content %}
+
+
+<div class="d-flex">
+    <div class="m-3 card" style="width: 20vw">
+      <form action="submit">
+        <div id="category-browse-filters">
+          <div class="card-body">
+            <div class="p-1 m-2">
+              <h4>Busca especifica</h4>
+              <input
+                name="keyword"
+                autocomplete="current-password"
+                placeholder="Palabra Clave"
+                required=""
+                onchange="onchangg(this)"
+                type="password"
+                class="form-control form-control"
+              />
+              <div class="invalid-feedback"></div>
+            </div>
+            <h4>Filtros</h4>
+            <div class="p-1 m-2">
+              <select class="form-control" placeholder="hola">
+                <option selected>Categorias...</option>
+                <option>Cuentos</option>
+                <option>Conocimiento</option>
+                <option>Romance</option>
+                <option>Fantasia</option>
+              </select>
+            </div>
+            <div class="p-1 m-2">
+              <select class="form-control" placeholder="hola">
+                <option selected>Tipo $ ...</option>
+                <option>Gratis</option>
+                <option>Subscrito</option>
+                <option>Pago</option>
+              </select>
+            </div>
+            <div class="p-1 m-2">
+              <input
+                name="author"
+                autocomplete="current-password"
+                placeholder="Author"
+                required=""
+                onchange="onchangg(this)"
+                type="password"
+                class="form-control form-control"
+              />
+              <div class="invalid-feedback"></div>
+            </div>
+            <div class="p-1 m-2 d-flex">
+              <button type="button" class="ml-auto mr-1 btn btn-dark">
+                Buscar
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+  <div class="card-body ">
+<div class="body-lib d-flex">
+{% for post in posts %}
+<div class="card m-4" style="width: 400px">
+  <div class="card-body">
+    <h4>{{post.title}}</h4>
+    <div
+      class="image-container d-flex flex-column justify-content-center"
+    >
+      <a href="/">
+        <img
+          src="https://siguealconejoblanco.es/wp-content/uploads/2013/11/Isaac-Asimov-Fundacion-e-Imperio.jpg"
+          alt=""
+          width="300"
+          height="300"
+        />
+      </a>
+    </div>
+    <div id="content-lib-body" class="" style="text-align: left">
+      <div
+        class="communityRating__starsWrapper communityRating__starsWrapper--medium"
+        data-reactid=".9v338zkyrk.$33cb403f881b187bc0359f4cf718c458701808d1.1.0.1.2.0.$0.0.0"
+      >
+      <div
+          class="communityRating__stars communityRating__stars--medium"
+          id='{{ post.title }}Star'
+          aria-label="Rated {{ post.pointMedia }} of 5"
+          data-reactid=".9v338zkyrk.$33cb403f881b187bc0359f4cf718c458701808d1.1.0.1.2.0.$0.0.0.0"
+        ></div>
+        
+      </div>
+      <script> document.getElementById(`{{ post.title }}Star`).style.width = `{{post.pointMediaPercent}}%` </script>
+   
+      <div id="add-info-lib-body">
+  
+        <p>
+          {{ post.pointMedia }} · {{ post.pointCount }} Puntuaciones · Author:
+          <strong> {{post.author}} </strong> · Publicado: {{post.publisher}} {{post.year}}· Pais
+          Origen: {{post.country}}
+        </p>
+      </div>
+      <p>
+        <strong>Descripcion: </strong>
+        {{post.previewContent}}
+      </p>
+      <button href='/' type="button" class="pl-auto m-1 btn btn-dark">
+        Agregar
+      </button>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+
+</div>
+<div >
+    
+  <nav class="" aria-label="..." >
+      <ul class="pagination m-auto" style="width: fit-content;">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+        </li>
+        <li class="page-item active" ><a class="page-link" href="#">1</a></li>
+        <li class="page-item " aria-current="page">
+          <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+
+  </div>
+{% endblock content %}
