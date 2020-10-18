@@ -1,7 +1,9 @@
-
+{% extends "web/index.html" %}
 {% block content %}
 
-  <script src="../js/Component/home.js"></script>
+{% load static %}
+
+<script src='{% static  "JS/Component/home.js" %}'></script>
   <div id='home'>
     
     <!-- banner -->
