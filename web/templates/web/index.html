@@ -16,9 +16,9 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}" />
     <link rel="stylesheet" href="{% static 'css/res.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/simplifiied.css' %}" />
     <link rel="icon" href="{% static 'public/books.png' %}"  />
 
+    <link rel="stylesheet" href="{% static 'css/simplifiied.css' %}" />
 
 
 
@@ -106,18 +106,31 @@
 
     {% if user.is_authenticated %}
     <li class="nav-item dropdown">
+
+
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      !imagen! Pts 0 
+  
+    
+      
+        
+      <img src="{{user.profile.image.url}}" class='avatarNav' alt="Avatar"/>
+        Pts {{user.profile.points}}
+
+      
       </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      <a class="dropdown-item" href="{% url 'Booklary-profile '%} href="#">Perfil</a>
+
+
+      <div class="dropdown-menu"  aria-labelledby="navbarDropdownMenuLink">
+      <a class="dropdown-item" href="{% url 'Booklary-profile'%}" >Perfil</a>
       <a class="dropdown-item"  href="{% url 'Booklary-profile-config' %}">Configuracion</a>
       <a class="dropdown-item" href="{% url 'logout' %}">Salir</a>
       </div>
       </li>
       {% else %}
-      <a class="btn btn-outline-warning "  id='' href='/login' role="button">Iniciar Sesión</a>
-    
+      
+    <li class="nav-item">
+      <a class="btn btn-outline-warning" id='' href='/login' role="button">Iniciar Sesión</a>
+    </li>
       {% endif %}
       
     </ul>
@@ -205,8 +218,7 @@
         <h3 class="mb-3 card-title">Enterate primero</h3>
         <li style="list-style-type: none">
           <form action="submitCorreo form-group" class="display:flex">
-            <div class="input-group">
-              
+            <div class="input-group">    
               <input  class='form-control'Style="width: 70%" type="text" placeholder="Ingresa tu correo aqui !"/> <button type='submit' class="btn btn-warning">ENVIAR</button>
             </div>
             

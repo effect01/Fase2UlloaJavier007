@@ -65,13 +65,7 @@ class Comment(models.Model):
     def __str__(self):
         return "%s/%s" % (self.user, self.post)
 
-class UserBook(models.Model):
-    post = models.ForeignKey('Post' , on_delete=models.CASCADE)
-    user = models.ForeignKey(User , on_delete=models.CASCADE)
-    class Meta:
-        constraints = [  models.UniqueConstraint(fields=['user', 'post'], name='1 virtual book')]
-    def __str__(self):
-        return "%s/%s" % (self.user, self.post)
+
 
 
 class GenBook(models.Model):
@@ -88,3 +82,14 @@ class Author(models.Model):
         ordering = ['last_name', 'first_name']
     def __str__(self):
         return "%s/%s" % (self.last_name, self.first_name)
+
+
+class UserBook(models.Model):
+    post = models.ForeignKey('Post' , on_delete=models.CASCADE)
+    user = models.ForeignKey(User , on_delete=models.CASCADE)
+    class Meta:
+        constraints = [  models.UniqueConstraint(fields=['user', 'post'], name='1 virtual book')]
+    def __str__(self):
+        return "User: %s, Book: %s" % (self.user, self.post)
+    def et(self):
+        return f'self.user.username'

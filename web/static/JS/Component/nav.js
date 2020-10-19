@@ -34,15 +34,31 @@ const collapserFix = () => {
     }
 };
 
-const navLi2 = () => {
+const navLi = () => {
     let pathName = window.location.pathname
     pathName = pathName.substring(1 , pathName.length -1 ) 
-    document.querySelector(`nav li a[name="${pathName}"]`).className =  'nav-link active';
+    let navLi =   document.querySelector(`nav li a[name="${pathName}"]`);
+    if(navLi){
+        navLi.className =  'nav-link active';
+
+    }
+
+};
+
+
+const profileNavA = () => {
+    let pathNames = window.location.pathname
+    console.log(pathNames)
+    pathNames = pathNames.substring(1 , pathNames.length -1 ) 
+    let navLiProfile =   document.querySelector(`#submenu-profile ul a[name="${pathNames}"]`);
+    if(navLiProfile){
+        navLiProfile.className =  'list-group-item list-group-item-action list-group-item-info active'}
 };
 
 window.addEventListener('load', () => {
-    navLi2();
+    navLi();
     collapserFix();
+    profileNavA();
     // UserButton();
     // navLi();
 });

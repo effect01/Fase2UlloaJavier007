@@ -51,7 +51,7 @@ z-index: 2;
 #menu-profile{
 
     height: 700px; 
-    background: #f2f1e3;
+    background: #f2f2f0;
 
 }
 #submenu-profile > ul{
@@ -60,9 +60,9 @@ z-index: 2;
 
 .foto-profile{
     margin: auto;
-    width: 220px;
-    height: 220px;
-    border: 14px solid rgb(130, 130, 209) ;
+    width: 320px;
+    height: 320px;
+    border: 14px solid rgb(147, 147, 172) ;
     border-radius: 5px;
     justify-self: center;
     background-color: rgb(138, 138, 138);
@@ -75,7 +75,7 @@ z-index: 2;
 .additional-info-profile{
     
     height: 40%;
-    background-color: rgba(99, 72, 23, 0.179);
+    background-color: rgba(208, 205, 200, 0.179);
     border-radius: 24px;
     margin: 10px;
 
@@ -89,17 +89,35 @@ z-index: 2;
     padding: 0;
     margin: 3px;
 }
+
+.profile-library{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    overflow-y: scroll;
+    padding: 10px;
+    width: 100%;
+    max-height: 1000px;
+}
+
+.text-info p{
+    padding: 0;
+    margin: 3px;
+}
+#content-profil form.form-group{
+    padding: 10px;
+  }
+
 .communityRating__stars {
     background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgdmlld0JveD0iMCAwIDEyIDEyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIj4KICAgIDx0aXRsZT5zdGFyLWZ1bGw8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZGVmcz48L2RlZnM+CiAgICA8ZyBpZD0iQXNzZXRzIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBza2V0Y2g6dHlwZT0iTVNQYWdlIj4KICAgICAgICA8cG9seWdvbiBpZD0iU3Rhci04LUNvcHktNSIgZmlsbD0iI0ZBNjA0QSIgc2tldGNoOnR5cGU9Ik1TU2hhcGVHcm91cCIgcG9pbnRzPSI2LjAwMTAxODI2IDguNzkxNTE0NzEgMi4yOTIxODUwMSAxMS4zNTk5OTk3IDMuNjAwNjEwOTYgNy4wNTU4NjEyMSAtMy41MDM0MjUxMmUtMTYgNC4zMzkxMzM3NiA0LjUxNzQ4NDk2IDQuMjQ3NTE0ODUgNi4wMDEwMTgyNiAwIDcuNDg0NTUxNTYgNC4yNDc1MTQ4NSAxMi4wMDIwMzY1IDQuMzM5MTMzNzYgOC40MDE0MjU1NiA3LjA1NTg2MTIxIDkuNzA5ODUxNTEgMTEuMzU5OTk5NyAiPjwvcG9seWdvbj4KICAgIDwvZz4KPC9zdmc+);
 }
 .communityRating__stars--medium {
-    height: 14px;
-    background-size: 14px 14px;
+    height: 34px;
+    background-size: 34px 34px;
     
 }
 .communityRating__starsWrapper--medium {
-    width: 70px;
-    background-size: 14px 14px;
+    width: 176px;
+    background-size:  34px 34px;
 }
 .communityRating__starsWrapper {
     margin-top: 3px;
