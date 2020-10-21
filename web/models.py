@@ -6,7 +6,6 @@ from django.urls import reverse
 
 class Post(models.Model):
     title = models.CharField(max_length=35)
-
     content = models.TextField(blank=True)
     genre = models.ManyToManyField('GenBook')
     author = models.ForeignKey('Author', on_delete=models.CASCADE  )
@@ -17,12 +16,15 @@ class Post(models.Model):
     image = models.URLField('Image Address')
     postedBy = models.ForeignKey(User , on_delete=models.CASCADE )
     data_posted = models.DateTimeField(default=timezone.now)
-
+    base_price = models.IntegerField(default=0)
     def __str__(self):
         return self.title
-    def get_absolute_url(self):
-        return reverse('book-detail', args=[str(self.id)])
+    def addMyLibrary(self, request):
 
+        return 2132131
+    
+    def get_absolute_url(self):
+        return reverse('post-detail', args=[str(self.id)])
     def pointCount(self):
         return self.star_set.all().count()
     def pointMedia(self):
@@ -38,7 +40,10 @@ class Post(models.Model):
             return round( self.pointMedia()*20)
         else:
             return 0
-
+    def price(self):
+        IVA_CHILE = 0.19
+        return round(self.base_price + self.base_price * IVA_CHILE)
+  
 
 class Star(models.Model):
     VOTE_POINT = (
@@ -59,12 +64,16 @@ class Star(models.Model):
         return self.vote
 
 class Comment(models.Model):
-    post = models.ForeignKey('Post' , on_delete=models.CASCADE )
+    post = models.ForeignKey('Post' ,related_name='comments', on_delete=models.CASCADE )
     user = models.ForeignKey(User , on_delete=models.CASCADE)
     comment = models.TextField(blank=True )
+    created_on = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        return "%s/%s" % (self.user, self.post)
-
+        return "Comenterio de %s por: %s" % ( self.post , self.user )
+    class Meta:
+        ordering = ['-created_on']
+    def get_absolute_url(self):
+        return reverse('post-detail', args=[str(self.post.id)])
 
 
 
@@ -81,12 +90,13 @@ class Author(models.Model):
     class Meta:
         ordering = ['last_name', 'first_name']
     def __str__(self):
-        return "%s/%s" % (self.last_name, self.first_name)
+        return "%s %s" % ( self.first_name , self.last_name )
 
 
 class UserBook(models.Model):
     post = models.ForeignKey('Post' , on_delete=models.CASCADE)
     user = models.ForeignKey(User , on_delete=models.CASCADE)
+ 
     class Meta:
         constraints = [  models.UniqueConstraint(fields=['user', 'post'], name='1 virtual book')]
     def __str__(self):

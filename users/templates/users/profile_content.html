@@ -72,12 +72,12 @@ data-reactid=".9v338zkyrk.$33cb403f881b187bc0359f4cf718c458701808d1.1.0.1.2.0.$0
       {% if user.profile.ex1 %}
     <div class='profile-library'> 
         {% for post in  user.userbook_set.all %}
-        <div class="card" style='  background-color: #f5ebe0;  width: fit-content;
+        <div class="card" style='  background-color: #9b9b9a12;  width: fit-content;
         margin: 7px;'>
           <div class="card-body">
             <img src="{{post.post.image}}" style='width: 200px;height:300px;' alt="">
-            <a href="">
-                <h4>   {{post.post.title.capitalize|slice:"0:12"}} </h4>
+            <a href="{{post.post.get_absolute_url}}" style="color: #e15f12">
+                <h4>   {{post.post.title.capitalize|slice:"0:25"}} </h4>
             </a>
           </div>
         </div>

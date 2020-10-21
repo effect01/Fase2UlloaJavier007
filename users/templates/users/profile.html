@@ -6,13 +6,13 @@
 <div
 id="profile-body"
   class=""
-  style="background: #f0eeea;"
+  style="background: #fcffff;"
 >
   <div class="row row-cols-2">
     <div id="menu-profile" class="col-3 card-body">
       <div class="foto-profile"  >
 
-        <img class='w-100 h-100'src='{{ user.profile.image.url }}'/>
+        <img class='w-100 h-100 rounded-circle'src='{{ user.profile.image.url }}'/>
       </div>
       <h3 class='name-profile'  >{{  user.username.capitalize|slice:"0:12" }}</h3>
       <div id="submenu-profile" class="list-group">

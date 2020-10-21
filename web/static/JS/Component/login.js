@@ -61,7 +61,9 @@ const fixedLogin = () => {
     div_id_dateBirth: 'Fecha de cumpleaños :)',
     div_id_code_number: "Codigo de Telefono",
     div_id_phone_number: "Numero de Celular",
-    div_id_image: 'Inserte una imagen de Perfil'
+    div_id_image: 'Inserte una imagen de Perfil',
+    div_id_comment: 'Deja tu comentario !'
+
   };
   for (const [key, value] of Object.entries(listLabelName)) {
     const element = key;

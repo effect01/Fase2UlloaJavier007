@@ -51,7 +51,7 @@ z-index: 2;
 #menu-profile{
 
     height: 700px; 
-    background: #f2f2f0;
+    background: #29282605;
 
 }
 #submenu-profile > ul{
@@ -62,8 +62,8 @@ z-index: 2;
     margin: auto;
     width: 320px;
     height: 320px;
-    border: 14px solid rgb(147, 147, 172) ;
-    border-radius: 5px;
+    border: 9px solid rgb(147, 147, 172) ;
+    border-radius: 180px;
     justify-self: center;
     background-color: rgb(138, 138, 138);
 }
@@ -110,15 +110,26 @@ z-index: 2;
 .communityRating__stars {
     background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgdmlld0JveD0iMCAwIDEyIDEyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIj4KICAgIDx0aXRsZT5zdGFyLWZ1bGw8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZGVmcz48L2RlZnM+CiAgICA8ZyBpZD0iQXNzZXRzIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBza2V0Y2g6dHlwZT0iTVNQYWdlIj4KICAgICAgICA8cG9seWdvbiBpZD0iU3Rhci04LUNvcHktNSIgZmlsbD0iI0ZBNjA0QSIgc2tldGNoOnR5cGU9Ik1TU2hhcGVHcm91cCIgcG9pbnRzPSI2LjAwMTAxODI2IDguNzkxNTE0NzEgMi4yOTIxODUwMSAxMS4zNTk5OTk3IDMuNjAwNjEwOTYgNy4wNTU4NjEyMSAtMy41MDM0MjUxMmUtMTYgNC4zMzkxMzM3NiA0LjUxNzQ4NDk2IDQuMjQ3NTE0ODUgNi4wMDEwMTgyNiAwIDcuNDg0NTUxNTYgNC4yNDc1MTQ4NSAxMi4wMDIwMzY1IDQuMzM5MTMzNzYgOC40MDE0MjU1NiA3LjA1NTg2MTIxIDkuNzA5ODUxNTEgMTEuMzU5OTk5NyAiPjwvcG9seWdvbj4KICAgIDwvZz4KPC9zdmc+);
 }
-.communityRating__stars--medium {
+#content-lib-body .communityRating__stars--medium {
     height: 34px;
     background-size: 34px 34px;
     
 }
-.communityRating__starsWrapper--medium {
+#content-lib-body  .communityRating__starsWrapper--medium {
     width: 176px;
     background-size:  34px 34px;
 }
+#content-post-preview .communityRating__stars--medium ,  .communityRating__stars--medium {
+    height: 15px ;
+    background-size: 17px 17px ;
+    
+}
+#content-post-preview .communityRating__starsWrapper--medium , .communityRating__starsWrapper--medium  {
+    width: 85px;
+    background-size:  17px  17px ;
+}
+
+
 .communityRating__starsWrapper {
     margin-top: 3px;
     float: left;

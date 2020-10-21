@@ -17,10 +17,9 @@ def register(request):
             messages.success(request, f'Tu cuenta a sido creada, {username}!')
             return redirect('login')
     else:
-        form = UserRegisterForm()
-
-            
+        form = UserRegisterForm()  
     return render(request = request, template_name= 'users/register.html', context={'form': form})
+
 
 @login_required
 def profile(request):

@@ -21,7 +21,7 @@ class Profile(models.Model):
     phone_number = models.IntegerField( default=0)
     dateBirth = models.DateField()
     def __str__(self):
-        return "User Profile: %s" % (self.user)
+        return "%s" % (self.user)
     def save(self):
         super().save()
         img = Image.open(self.image.path)
@@ -53,7 +53,8 @@ class Profile(models.Model):
         return False
     def birthday(self):
         return self.dateBirth
-    
+    def igotttem(self):
+        return self.user.username
 
 
 class ProfileVote(models.Model):
