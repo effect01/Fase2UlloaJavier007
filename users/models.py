@@ -15,9 +15,9 @@ class Profile(models.Model):
         (57,'COL +57'),
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    image = models.ImageField(default='default.png', upload_to='profile_pics')
     points = models.IntegerField( default=0)
-    code_number = models.IntegerField( choices=CODES_PHONE, max_length=12, default=0 ) 
+    code_number = models.IntegerField( choices=CODES_PHONE, default=0 ) 
     phone_number = models.IntegerField( default=0)
     dateBirth = models.DateField()
     def __str__(self):
@@ -65,7 +65,7 @@ class ProfileVote(models.Model):
         (4,'4'),
         (5,'5'),
     )
-    vote = models.IntegerField(max_length=1, choices=VOTE_POINT )
+    vote = models.IntegerField( choices=VOTE_POINT )
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     class Meta:

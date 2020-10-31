@@ -61,10 +61,21 @@ const fixedLogin = () => {
     div_id_dateBirth: 'Fecha de cumpleaños :)',
     div_id_code_number: "Codigo de Telefono",
     div_id_phone_number: "Numero de Celular",
-    div_id_image: 'Inserte una imagen de Perfil',
-    div_id_comment: 'Deja tu comentario !'
+    div_id_image: 'Inserte una imagen',
+    div_id_comment: 'Deja tu comentario !',
+    div_id_title: 'Titulo',
+    div_id_content: 'Contenido',
+    div_id_genre: 'Genero',
+    div_id_author:'Autor',
+    div_id_previewContent:'Contenido previo',
+    div_id_year: 'Años en que se publico',
+    div_id_publisher: "Publicador de la edicion",
+    div_id_country: "Pais",
+    div_id_base_price: "Precio base"
 
   };
+
+
   for (const [key, value] of Object.entries(listLabelName)) {
     const element = key;
     if (document.querySelector(`#${element}`)) {
@@ -75,14 +86,38 @@ const fixedLogin = () => {
     }
   }
 };
+
+
+
 const newStyleForm = (inputGroupId,name) => {
-  if(inputGroupId ==  "div_id_phone_number" || inputGroupId ==  "div_id_code_number" || inputGroupId ==  "div_id_image" || inputGroupId == 'div_id_dateBirth'){
-    document.querySelector(`#${inputGroupId} label`).textContent= name ;
-  }else{
+  let isText = false;
+  const listYesLabel = ["div_id_phone_number" , "div_id_code_number",  "div_id_image", 'div_id_dateBirth',
+  'div_id_title',
+  'div_id_content',
+  'div_id_genre',
+  'div_id_author',
+  'div_id_previewContent',
+  'div_id_year',
+  'div_id_publisher',
+  'div_id_country',
+  'div_id_base_price',]
+  listYesLabel.forEach(
+  names =>{
+    if(inputGroupId ==  names ){
+      document.querySelector(`#${inputGroupId} label`).textContent= name ;
+      isText = true;
+    }
+  })
+ if(!isText){
     document.querySelector(`#${inputGroupId} label`).style.display = 'none';
   }
   document.querySelector(`#${inputGroupId}`).style.marginTop = '20px';
+
+
 };
+
+
+
 const translateInput = (id, newName) => {
   document.querySelector(`#${id}`).placeholder =
     newName.replace(/^\w/, c => c.toUpperCase());;

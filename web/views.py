@@ -4,14 +4,16 @@ from django.shortcuts import render , get_object_or_404,redirect
 from django.urls.base import reverse_lazy
 from django.views.generic import ListView , FormView  
 from django.http import HttpResponse, HttpResponseForbidden
-
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView , FormMixin 
+from django.views.generic.edit import CreateView , FormMixin , UpdateView, DeleteView
 from users.models import Profile
+from django.contrib.messages.views import SuccessMessageMixin
 from .models import *
-from .form import CommentForm , addBookForm
+from .form import CommentForm , addBookForm , CreatePostForm
 
+from django.contrib.auth.decorators import login_required
 def index(request):
     return render(request, 'web/index.html')
     
@@ -31,20 +33,41 @@ def register(request):
 def library(request):
     context = {
         'posts':Post.objects.all(),
-      
     }
     return render(request, 'web/views/post.html', context)
 
-
-class PostCreateView(CreateView):
+class PostCreateView(SuccessMessageMixin, LoginRequiredMixin,CreateView):
     model =Post
-    fields = {'title', 'Content' , 'Author',
-    'PreviewContent', 'Year', 'Publisher',
-    'contry', 'image', 'base_price' }
+    template_name = 'web/views/add_post.html'
+    form_class =CreatePostForm
+    success_message = "El post<libro> %(title)s se ah creado con exito"
     def form_valid(self, form):
         form.instance.postedBy = self.request.user
         return super().form_valid(form)
 
+class PostUpdateView( SuccessMessageMixin , LoginRequiredMixin, UserPassesTestMixin, UpdateView ):
+    model = Post
+    form_class =CreatePostForm
+    template_name = 'web/views/add_post.html'
+    success_message = "El post<libro> %(title)s se ah actualizado"
+    
+    def form_valid(self, form):
+        form.instance.postedBy = self.request.user
+        return super().form_valid(form)
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
+
+class PostDeleteView(SuccessMessageMixin, LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Post
+    template_name = 'web/views/delete_post.html'
+    success_url = '/'
+    success_message = "El post<libro> %(title)s se ah eliminado con exito"
+    def test_func(self):
+        if self.request.user.is_superuser:
+            return True
+        return False
 
 class PostListView(ListView):
     model = Post
@@ -57,14 +80,8 @@ class PostDetailView(FormMixin,DetailView):
     model = Post
     template_name = 'web/views/post_detail.html'
     form_class = CommentForm
-
     def get_success_url(self):
         return reverse('post-detail', kwargs={'pk': self.object.pk} )
-    def get_success_url_add(self):
-        return reverse('item-added', kwargs={'pk': self.object.pk} )
-
-
-
     def post(self, request, *args, **kwargs):       
         try:
             if not request.user.is_authenticated:
@@ -96,6 +113,15 @@ class PostDetailView(FormMixin,DetailView):
         form.save()
         return super().form_valid(form)
 
+        
+class PostAdminDetailView(ListView):
+    LOGIN_REQUIRED = True
+    model = Post
+    template_name = 'web/views/admin_post_admin.html'
+    context_object_name = 'posts'
+    ordering = ['-data_posted']
+
+
 
 class AddItemForm(CreateView):
     model = UserBook
@@ -107,9 +133,6 @@ class AddItemForm(CreateView):
         post = Post.objects.filter(id = 1).first()
         post.userbook_set.create(user_id= 1 )
         messages.success(self.request, f'Tu cuenta a sido actualizada!')
-  
-
-    
 class AddCommentForm(CreateView):
     model = Comment
     form_class = CommentForm 

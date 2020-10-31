@@ -32,9 +32,17 @@ id="profile-body"
           >
               Configuración
         </a>
+{% if user.is_superuser %}
+        <a
+        name='admin_post/posts/'
+        href='{% url "admin_post" %}'
+        class="list-group-item list-group-item-action list-group-item-warning"
+        >
+            ADMIN
+      </a>
+        {% endif %}
+        
           <a
-
-
           name='logout'
             class="list-group-item list-group-item-action list-group-item-info"
             href='{% url "logout" %}'

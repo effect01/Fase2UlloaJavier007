@@ -13,13 +13,6 @@
       crossorigin="anonymous"
     />
 
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/res.css' %}" />
-    <link rel="icon" href="{% static 'public/books.png' %}"  />
-
-    <link rel="stylesheet" href="{% static 'css/simplifiied.css' %}" />
-
 
 
     {% block javascript %}
@@ -54,8 +47,15 @@
       crossorigin=""
     ></script>
 
- 
+
+
     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/res.css' %}" />
+    <link rel="icon" href="{% static 'public/books.png' %}"  />
+
+    <link rel="stylesheet" href="{% static 'css/simplifiied.css' %}" />
+
     <script src='{% static "JS/Component/login.js" %}'></script>
 
     <script src='{% static "JS/Component/nav.js" %}'></script>
@@ -123,11 +123,14 @@
       <div class="dropdown-menu"  aria-labelledby="navbarDropdownMenuLink">
       <a class="dropdown-item" href="{% url 'Booklary-profile'%}" >Perfil</a>
       <a class="dropdown-item"  href="{% url 'Booklary-profile-config' %}">Configuracion</a>
+     
+     {% if user.is_superuser  %}
+      <a class="dropdown-item"  href="{% url 'admin_post' %}"> Admin </a>
+     {% endif %}
       <a class="dropdown-item" href="{% url 'logout' %}">Salir</a>
       </div>
       </li>
       {% else %}
-      
     <li class="nav-item">
       <a class="btn btn-outline-warning" id='' href='/login' role="button">Iniciar Sesión</a>
     </li>

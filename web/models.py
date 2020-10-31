@@ -9,22 +9,24 @@ class Post(models.Model):
     content = models.TextField(blank=True)
     genre = models.ManyToManyField('GenBook')
     author = models.ForeignKey('Author', on_delete=models.CASCADE  )
-    previewContent = models.CharField(blank=True , max_length=120)
+    previewContent = models.CharField(blank=True , max_length=360)
     year = models.CharField(max_length=11)
     publisher = models.CharField(max_length=65)
     country = models.CharField(max_length=65)
-    image = models.URLField('Image Address')
-    postedBy = models.ForeignKey(User , on_delete=models.CASCADE )
+    image = models.URLField('Image Address' , default='https://image.freepik.com/vector-gratis/revista-vacia-portada-album-o-libro_150973-63.jpg')
+    postedBy = models.ForeignKey(User , on_delete=models.CASCADE  )
     data_posted = models.DateTimeField(default=timezone.now)
     base_price = models.IntegerField(default=0)
     def __str__(self):
         return self.title
-    def addMyLibrary(self, request):
-
-        return 2132131
-    
     def get_absolute_url(self):
         return reverse('post-detail', args=[str(self.id)])
+    def get_update_url(self):
+        return reverse('post-update', args=[str(self.id)])
+    def get_detele_url(self):
+        return reverse('post-delete', args=[str(self.id)])
+        
+
     def pointCount(self):
         return self.star_set.all().count()
     def pointMedia(self):

@@ -1,6 +1,7 @@
 {% extends "web/index.html" %} {% block content %}
 {% load crispy_forms_tags %}
 <div>
+  
     <div
     class="card-body w-75 d-flex m-auto"
     style="display: flex; align-content: center; justify-content: center"
@@ -172,7 +173,13 @@
         
         
     </div>
-    
+    <style>
+        @media (max-width: 1026px ) {
+        #comment-item .w-75 ,#comment-item .w-25{
+          width: 100%;
+        }}
+        
+      </style>
 </div>
 </div>
 </div>
