@@ -3,17 +3,17 @@ from django.contrib import messages
 from .forms import UserRegisterForm, ProfileUpdateForm , UserUpdateForm
 from django.contrib.auth import  authenticate, login
 from django.contrib.auth.decorators import login_required
-
+from .models import Profile
 
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST or None)
         if form.is_valid():
             user = form.save()
-            print('hola')
             login(request,user)
             username = form.cleaned_data.get('username')
-            print(username)
+            nuevo_profile = Profile(user=user,dateBirth= '1999-12-12' ) 
+            nuevo_profile.save()
             messages.success(request, f'Tu cuenta a sido creada, {username}!')
             return redirect('login')
     else:

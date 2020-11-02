@@ -15,6 +15,16 @@
     max-width: 100%;
 
   }
+  #admin_post h4{
+    display: block;
+    position: inherit;
+}
+  #about  .main > div, #contact  .main > div {
+  
+    width: 100vw;
+    padding: 14px;
+  }
+
   #sup-left{
  
     position: absolute;
@@ -50,15 +60,6 @@ div.row.row-cols-3{
   .m-4{
     margin-bottom: 1.5rem!important;
 }
-#admin_post h4{
-    display: block;
-    position: absolute;
-}
-  #about  .main > div, #contact  .main > div {
-  
-    width: 100vw;
-    padding: 14px;
-  }
 
 .col-3{
   flex: 0 0 83.333333%;

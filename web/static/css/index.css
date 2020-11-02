@@ -27,7 +27,10 @@ ul.navbar-nav li.nav-item.dropdown {
   padding-bottom: 0;
 }
 
-
+#admin_post h4{
+  
+position: absolute;
+}
 /* #e0a800 main color */
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

@@ -12,6 +12,12 @@ header h3,h2{
     
     color: rgb(41, 50, 70);
 }
+#content-post-preview > p
+{
+    min-height: 170px;
+
+}
+
 
 header img.img-fluid{
     height: 40vh;

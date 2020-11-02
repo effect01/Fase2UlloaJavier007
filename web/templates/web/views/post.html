@@ -3,7 +3,7 @@
 
 
 <div class="d-flex">
-    <div class="m-3 card" style="width: 20vw">
+    <div class="m-3 card " style="min-width:360px" >
       <form action="submit">
         <div id="category-browse-filters">
           <div class="card-body">
@@ -30,14 +30,7 @@
                 <option>Fantasia</option>
               </select>
             </div>
-            <div class="p-1 m-2">
-              <select class="form-control" placeholder="hola">
-                <option selected>Tipo $ ...</option>
-                <option>Gratis</option>
-                <option>Subscrito</option>
-                <option>Pago</option>
-              </select>
-            </div>
+          
             <div class="p-1 m-2">
               <input
                 name="author"
@@ -61,11 +54,11 @@
     </div>
     
   <div class="card-body ">
-<div class="body-lib d-flex">
+<div class="body-lib d-flex row">
 {% for post in posts %}
-<div class="card m-4" style="width: 400px">
+<div class="card m-4" style="width: 400px; height:fit-content;">
   <div class="card-body">
-    <h4>{{post.title|slice:"0:24" }}</h4>
+    <h4>{{post.title|slice:"0:26" }}</h4>
     <div
       class="image-container d-flex flex-column justify-content-center"
     >
@@ -105,6 +98,7 @@
         <strong>Descripcion: </strong>
         {{post.previewContent}}
       </p>
+      <legend class="border-bottom mb-4"></legend>
       <a href='{{post.get_absolute_url}}' type="button" class="pl-auto m-1 btn btn-dark">
         Ver más
       </a>
@@ -126,8 +120,7 @@
         <li class="page-item " aria-current="page">
           <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
         </li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
+     <li class="page-item">
           <a class="page-link" href="#">Next</a>
         </li>
       </ul>

@@ -17,7 +17,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.png', upload_to='profile_pics')
     points = models.IntegerField( default=0)
-    code_number = models.IntegerField( choices=CODES_PHONE, default=0 ) 
+    code_number = models.IntegerField( choices=CODES_PHONE, default=CODES_PHONE[0][0]) 
     phone_number = models.IntegerField( default=0)
     dateBirth = models.DateField()
     def __str__(self):

@@ -9,7 +9,7 @@ class Post(models.Model):
     content = models.TextField(blank=True)
     genre = models.ManyToManyField('GenBook')
     author = models.ForeignKey('Author', on_delete=models.CASCADE  )
-    previewContent = models.CharField(blank=True , max_length=360)
+    previewContent = models.CharField(blank=True , max_length=600)
     year = models.CharField(max_length=11)
     publisher = models.CharField(max_length=65)
     country = models.CharField(max_length=65)

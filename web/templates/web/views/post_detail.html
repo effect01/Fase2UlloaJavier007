@@ -54,6 +54,7 @@
             <p>Author: {{object.author}}·</p>
             <p>Publicado: {{object.year}}</p>
             <p>Pais: {{object.country}}</p>
+            <p>Genero: {% for gen in post.genre.all %} {{gen}}.  {%endfor%} </p>
         </div>
     </div>
 </div>
@@ -98,13 +99,57 @@
 <div id="review-item" class="card-body">
     
     <h3>Puntuaciones</h3>
-    {% if post.star %}
-    <a href="">ver todas las puntuaciones</a>
-    {% else %}
-    <div class="card-body p-5 w-50 m-auto">
+    {% if post.star_set.all  %}
+    <a href="">Dar tu puntuacion</a>
+    
+    <div class="m-3 p-3 font-weight-normal h4" >
+     
+    {% for star in post.star_set.all  %}
+    <div class="m-1 justify-content-center d-flex">
+        <p>    <strong>
         
-        <h2 class="text-muted">No hay Puntuaciones aun 🙄</h2>
-    </div>
+            {{star.user.username.capitalize }} 
+        </strong> le a dado un {{star.vote}}
+    
+
+        </p>
+
+<div class="p-1">
+    
+    <div
+    class="communityRating__starsWrapper communityRating__starsWrapper--medium"
+    data-reactid=".9v338zkyrk.$33cb403f881b187bc0359f4cf718c458701808d1.1.0.1.2.0.$0.0.0"
+    >
+    <div
+    class="communityRating__stars communityRating__stars--medium"
+    id='vote_star_{{star.user_id}}'
+    aria-label="Rated {{ star.vote }} of 5"
+    data-reactid=".9v338zkyrk.$33cb403f881b187bc0359f4cf718c458701808d1.1.0.1.2.0.$0.0.0.0"
+    ></div>
+
+</div>
+    
+</div>
+ 
+</div>
+
+
+
+</div>  <script>
+    let vote= '{{star.vote}}' * 20 ; 
+    document.getElementById(
+                `vote_star_{{star.user_id}}`
+                ).style.width = vote+'%'; 
+       </script>
+    {% endfor  %}
+
+        <a href="">ver todas las puntuaciones</a>
+    {% else %}
+        <div class="card-body p-5 w-50 m-auto">
+    
+            
+            <h2 class="text-muted">No hay Puntuaciones aun 🙄</h2>
+        </div>
     {% endif %}
     
 </div>
@@ -161,7 +206,7 @@
         
         {% endfor %}
         <a href="/">Ver más comentarios :)</a>
-        {% else%}
+        {% else %}
         <div class="card p-5">
             
             <h2 class="text-muted">No hay comentarios aun 🤨</h2>
